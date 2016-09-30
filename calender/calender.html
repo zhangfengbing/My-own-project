@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的日历</title>
+    <link href="mycss.css" rel="stylesheet">
+</head>
+<body>
+<table id="calendar" width="100%" align="center">
+    <tr>
+        <td bgcolor="#78b3ed" height="25">
+            <table id="header"  width="100%">
+                <tr align="center">
+                    <td>&lt;</td>
+                    <td align="center">
+                        <span id="showDate">2016-04-30</span>
+                    </td>
+                    <td>&gt;</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td height="25">
+            <table id="day" bgcolor="#e7f1fd" width="100%">
+                <tr>
+                    <th>日</th>
+                    <th>一</th>
+                    <th>二</th>
+                    <th>三</th>
+                    <th>四</th>
+                    <th>五</th>
+                    <th>六</th>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td height="150" id="container"></td>
+    </tr>
+</table>
+
+<script src="calender.js"></script>
+
+</body>
+</html>
