@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>picture</title>
+    <link href="pic.css" rel="stylesheet">
+</head>
+<body>
+<div id="content">
+    <a id="prev" ><</a>
+    <a id="next" >></a>
+    <p id="text">这是第一张图片</p>
+    <span id="span1">1/4</span>
+    <img id="img1" src="http://www.th7.cn/d/file/p/2016/07/28/0ea8c0184a157158be37970ac193b320.jpg">
+
+
+</div>
+<script>
+ var content=document.getElementById("content");
+ var prev=document.getElementById("prev");
+ var next=document.getElementById("next");
+ var text=document.getElementById("text");
+ var span1=document.getElementById("span1");
+ var img1=document.getElementById("img1");
+
+    var arrURl=["http://www.th7.cn/d/file/p/2016/07/28/0ea8c0184a157158be37970ac193b320.jpg",
+        "http://img.jcwcn.com/attachment/forum/201206/24/1950375rq1ruexxacvx8k3.jpg",
+        "http://wmimg.sc115.com/wm/pic/1604/1604bilz1whp14s.jpg",
+        "http://img1.fanlibang.cn/upfiles/Tsh/55c412538c7b5juanpi.jpg"];
+    var arrText=["这是第一张图片","这是第二张唯美图片","这是第三张图片","第四张图片"];
+    var num=0;
+    function fnTab(){
+        span1.innerHTML=num+1+'/'+arrText.length;
+        img1.src=arrURl[num];
+        text.innerHTML=arrText[num];
+    }
+    prev.onclick=function(){
+        num--;
+        if(num==-1){
+            num=arrText.length-1;
+        }
+        fnTab();
+    };
+    next.onclick=function(){
+        num++;
+        if(num==arrText.length){
+            num=0;
+        }
+        fnTab();
+    };
+</script>
+</body>
+</html>
