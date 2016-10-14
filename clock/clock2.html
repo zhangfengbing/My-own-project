@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<span id="clock">
+    <img src="images/1.png">
+    <img src="images/3.png">
+    <span style="font-size: 30px">&#58;</span>
+    <img src="images/5.png">
+    <img src="images/1.png">
+    <span style="font-size: 30px">&#58;</span>
+    <img src="images/1.png">
+    <img src="images/5.png">
+</span>
+<script>
+    setInterval(function(){
+        clock();
+    },1000);
+    function clock(){
+        var clock=document.getElementById("clock");
+        imgs=clock.getElementsByTagName("img");
+        //console.log(imgs.length);
+        //console.log(addZero("15"));
+        var d=new Date();
+        var h= addZero(d.getHours());
+        var m= addZero(d.getMinutes());
+        var s= addZero(d.getSeconds());
+        var now=h+m+s;
+        //135015
+        for(var i=0;i<imgs.length;i++){
+            imgs[i].src="images/"+now.charAt(i)+".png";
+            //console.log(imgs[i]);
+            //var src="images/"+now.charAt(i)+".png";
+            //console.log("<img src='"+src+"'>");
+            //document.write("<img src='"+src+"'>");
+        }
+    }
+    //console.log(now);
+    function addZero(_num){
+        if(typeof _num=="number"){
+            if(_num<10){
+                _num="0"+_num;
+            }else{
+                _num=""+_num;
+            }
+        }else{
+            console.log("参数传递错误");
+        }
+        return _num;
+    }
+</script>
+</body>
+</html>
