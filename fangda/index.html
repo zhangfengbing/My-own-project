@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Jqury放大镜效果" />
+<meta name="keywords" content="Jqury放大镜效果" />
+<meta name="description" content="Jqury放大镜效果实现" />
+<title>html放大镜效果</title>
+<style type="text/css">
+body{
+	background-color:#333;
+}
+#Main {
+	width: 240px;
+	height: 350px;
+	border: 1px solid #fff;
+	background-image: url(imgS.jpg);
+	margin: 0 auto;
+	margin-top: 100px;
+}
+#child {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	border: 1px solid #fff;
+	background-image: url(imgB.jpg);
+	background-position: 0px 0px;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div id="Main">
+	<div id="child"></div>
+</div>
+
+</body>
+<script type="text/javascript" src="http://www.pengyaou.com/jquery-1.4.min.js">
+	</script>
+<script type="text/javascript">
+		$(document).ready(function(e) {
+			var flag = false;
+			$("#Main").hover(function() {
+				flag = true;
+			});
+			$(this).mousemove(function(e) {
+				if (flag == false) return;
+				var x = e.clientX - $("#Main").offset().left-50;
+				var y = e.clientY - $("#Main").offset().top-50;
+		
+				if (x >= 0 && x <= 140) {
+					$("#child").css("margin-left", x + "px");
+					$("#child").css("background-positionX", -x * 2 + "px");
+
+				}
+				if (y >= 0 && y <= 250) {
+					$("#child").css("margin-top", y + "px");
+					$("#child").css("background-positionY", -y * 2+ "px");
+				}
+			}, function() {});
+		});
+	</script>
+</html>
