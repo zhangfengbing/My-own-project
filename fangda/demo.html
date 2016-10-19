@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding:0px;
+            margin:0px;
+        }
+        #box{
+            width: 500px;
+            height:312px;
+            border:1px solid #ddd;
+            margin:150px auto;
+            position: relative;
+        }
+        #box .simg{
+            width: 500px;
+            height:312px;
+            background: #00ff66;
+
+        }
+        #box .move{
+            width:100px;
+            height:100px;
+            border:1px solid red;
+            display: block;
+            position:absolute;
+            top:0px;
+            left:0px;
+            background: white;
+            opacity: 0.5;
+            -moz-opacity:0.5 ;
+            filter: alpha(opacity=50);
+            display:none;
+
+        }
+        #box .shade{
+            width:100%;
+            height:100%;
+            background: pink;
+            display: block;
+            position: absolute;
+            top:0px;
+            left:0px;
+            opacity: 0;
+            -moz-opacity:0 ;
+            filter: alpha(opacity=0);
+        }
+        #box .bimg{
+            width:312px;
+            height:312px;
+            border:1px solid #ddd;
+            position:absolute;
+            left:500px;
+            top:0px;
+            display: none;
+            overflow: hidden;
+        }
+        #box img{
+            position:absolute;
+        }
+
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+</head>
+<body>
+<div id="box">
+    <div class="simg">
+        <img src="images/small.jpg" alt="每日一小图"/>
+        <span class="move"></span>
+        <span class="shade"></span>
+    </div>
+    <div class="bimg">
+        <img src="images/big.jpg" alt="每日一大图"/>
+    </div>
+</div>
+<script>
+    //鼠标移入  显示
+    $(".shade").mouseover(function(){
+        $(".move").show();
+        $(".bimg").show();
+    });
+    //鼠标移出  隐藏
+    $(".shade").mouseout(function(){
+        $(".move").hide();
+        $(".bimg").hide();
+    })
+    //小滑块随鼠标移动
+    $(".shade").mousemove(function(e){
+        //alert(000);
+        //鼠标位置
+        var x= e.clientX;
+        var y= e.clientY;
+        //
+        var l=$("#box").offset().left;//获取box与浏览器左边的距离
+        var t=$("#box").offset().top;//获取box与浏览器上边的距离
+        //相对于box的位置
+        var w=$(".move").width()/2;
+        var h=$(".move").height()/2;
+        //中心重合
+        var _left=x-l-w;
+        var _top=y-t-h;
+        //防止滑块溢出box
+        if(_top<0){
+            _top=0;
+        }else if(_top>($(".shade").height()-h*2-2)){
+            _top=($(".shade").height()-h*2-2);
+        }
+        if(_left<0){
+            _left=0;
+        }else if(_left>($(".shade").width()-w*2-2)){
+            _left=($(".shade").width()-w*2-2);
+        }
+        //移动的效果
+        $(".move").css({top:_top,left:_left});
+
+        //滑块能移动的最大宽、高
+        var yd_w=$(".shade").width()-w*2;
+        var yd_h=$(".shade").height()-h*2;
+        //滑动宽度和高度比例
+        var yd_wbl=_left/yd_w;
+        var yd_hbl=_top/yd_h;
+        console.log(yd_wbl+"/"+yd_hbl);
+        //
+        var big_left=($("#box .bimg img").width()-$("#box .bimg").width())*yd_wbl;  //大图对应的左边的距离
+        var big_top=($("#box .bimg img").height()-$("#box .bimg").height())*yd_hbl;  //大图对应的上面的距离
+
+        $("#box .bimg img").css({top:-big_top,left:-big_left})
+    })
+/*
+* 1.静态布局
+* 2.鼠标捕捉
+* 3.滑块的跟随
+* 4.防止溢出
+* 5.按比例调整大图
+*
+* */
+
+</script>
+</body>
+</html>
