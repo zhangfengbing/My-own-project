@@ -39,12 +39,12 @@ body{
 	</script>
 <script type="text/javascript">
 		$(document).ready(function(e) {
-			var flag = false;
+			var b = false;
 			$("#Main").hover(function() {
-				flag = true;
+				b = true;
 			});
 			$(this).mousemove(function(e) {
-				if (flag == false) return;
+				if (b == false) return;
 				var x = e.clientX - $("#Main").offset().left-50;
 				var y = e.clientY - $("#Main").offset().top-50;
 		
