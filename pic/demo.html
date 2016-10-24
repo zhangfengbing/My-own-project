@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #pbl{
+            width: 1318px;
+            margin:50px auto;
+            position:relative;
+
+        }
+        #pbl ul li{
+            list-style: none;
+            position:absolute;
+        }
+        #pbl ul li img{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div id="pbl">
+    <ul>
+        <li><img src="http://file25.mafengwo.net/M00/1E/F2/wKgB4lKUI8eAEpl0ABA-74w9F6830.rbook_comment.w326.jpeg" alt=""/></li>
+        <li><img src="http://c1.haibao.cn/img/326_326_100_0/1461743960.4958/b17d35b23cea77a3e7c21c3996b832cf.jpg" alt=""/></li>
+        <li><img src="http://content.52pk.com/files/091207/2274_170007_2_lit.jpg" alt=""/></li>
+        <li><img src="http://pic2.52pk.com/files/110705/3390_103753_1_lit.jpg" alt=""/></li>
+        <li><img src="http://content.52pk.com/files/100831/2230_094354_10_lit.jpg" alt=""/></li>
+        <li><img src="http://images.17173.com/news/2008/03/12/0312zerg03s.jpg" alt=""/></li>
+        <li><img src="http://www.valley-bj.com/upload/picfiles/20130116154705063.jpg" alt=""/></li>
+        <li><img src="http://www.mzb.com.cn/res/Home/1302/2013022111270694339.jpg" alt=""/></li>
+        <li><img src="http://soft.chinactc.net/YiFeng/Travel/UpImage/2015-2-2/20152214115166482.jpg" alt=""/></li>
+        <li><img src="http://imgnews.mycollect.net/201302/19/20130219154935_3597.jpg" alt=""/></li>
+        <li><img src="http://file11.mafengwo.net/M00/77/DC/wKgBpU4i5l6OGZPqAAECeuj-Z0A33.rbook_comment.w326.jpeg" alt=""/></li>
+        <li><img src="http://www.art696.com/upload/paints/2010-4/20104111122361040_m.jpg" alt=""/></li>
+        <li><img src="http://s7.rr.itc.cn/r/wapChange/201512_19_16/a2wyz84588792216405.jpg" alt=""/></li>
+        <li><img src="http://file20.mafengwo.net/M00/1C/14/wKgB21AkqnnuaVlBAAJpeQtOw4022.rbook_comment.w326.jpeg" alt=""/></li>
+        <li><img src="http://news.xinhuanet.com/shuhua/2010-06/10/xinsrc_16206071015472651450059.jpg" alt=""/></li>
+        <li><img src="http://www.sh1122.com/200610/20061031085842.jpg" alt=""/></li>
+    </ul>
+</div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script>
+        $(window).load(function(){
+            var obj=$("#pbl ul li");
+            var len= obj.length;
+            var Imglength={line1:[],line2:[],line3:[],line4:[]}
+            for(var i= 0;i<len;i++){
+                var inew=i%4;
+                switch (inew){
+                    case 0:
+                        obj.eq(i).css({left:"0px"});
+                        Imglength.line1.push(obj.eq(i).height());
+                            var step=Math.floor(i/4);
+                            if(step==0){
+                                obj.eq(i).css({top:"0px"});
+                            }else{
+                                var num=0;
+                                for(var j=0;j<step;j++){
+                                    num=num+Imglength.line1[j]+10;
+                                }
+                                obj.eq(i).css({top:num});
+                            }
+                        break;
+
+                    case 1:
+                        obj.eq(i).css({left:"331px"});
+                        Imglength.line2.push(obj.eq(i).height());
+                        var step=Math.floor(i/4);
+                        if(step==0){
+                            obj.eq(i).css({top:"0px"});
+                        }else{
+                            var num=0;
+                            for(var j=0;j<step;j++){
+                                num=num+Imglength.line2[j]+10;
+                            }
+                            obj.eq(i).css({top:num});
+                        }
+                        break;
+
+                    case 2:
+                        obj.eq(i).css({left:"662px"});
+                        Imglength.line3.push(obj.eq(i).height());
+                        var step=Math.floor(i/4);
+                        if(step==0){
+                            obj.eq(i).css({top:"0px"});
+                        }else{
+                            var num=0;
+                            for(var j=0;j<step;j++){
+                                num=num+Imglength.line3[j]+10;
+                            }
+                            obj.eq(i).css({top:num});
+                        }
+                        break;
+
+                    case 3:
+                        obj.eq(i).css({right:"0px"});
+                        Imglength.line4.push(obj.eq(i).height());
+                        var step=Math.floor(i/4);
+                        if(step==0){
+                            obj.eq(i).css({top:"0px"});
+                        }else{
+                            var num=0;
+                            for(var j=0;j<step;j++){
+                                num=num+Imglength.line4[j]+10;
+                            }
+                            obj.eq(i).css({top:num});
+                        }
+                        break;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
